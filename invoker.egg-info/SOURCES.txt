@@ -1,0 +1,9 @@
+setup.cfg
+setup.py
+invoker/__init__.py
+invoker.egg-info/PKG-INFO
+invoker.egg-info/SOURCES.txt
+invoker.egg-info/dependency_links.txt
+invoker.egg-info/entry_points.txt
+invoker.egg-info/not-zip-safe
+invoker.egg-info/top_level.txt
