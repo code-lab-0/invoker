@@ -1,5 +1,5 @@
 
-import rethinkdb as r
+#import rethinkdb as r
 
 from io import StringIO
 
@@ -56,18 +56,18 @@ class Task:
 
 
     def store_job_info(self, info):
-        conn = r.connect("localhost")
+        #conn = r.connect("localhost")
         if not self.exists_db(conn, "job_info"):
             self.create_db(conn, "job_info")
         
         if not self.exists_table(conn, "job_info", "job_info"):
             self.create_table(conn, "job_info", "job_info")
 
-        result = r.db("job_info").table("job_info").insert(info).run(conn)
-        print(result)
-        conn.close()
+        #result = r.db("job_info").table("job_info").insert(info).run(conn)
+        #print(result)
+        #conn.close()
 
-        return result["generated_keys"][0]
+        #return result["generated_keys"][0]
 
 
     def replace_job_info(self, job_id, info):
@@ -158,8 +158,8 @@ class Bash(Task):
                 p = Popen(line, shell=True)
                 p.wait()
 
-        job_id = self.store_job_info(self.job_info())
-        return job_id
+        #job_id = self.store_job_info(self.job_info())
+        #return job_id
         
 
     def job_info(self):
@@ -234,8 +234,8 @@ class SGE(Task):
         p = Popen("bash " + self.filename + " > " + self.filename + ".qsub_out", shell=True)
         p.wait()
 
-        job_id = self.store_job_info(self.job_info())
-        return job_id
+        #job_id = self.store_job_info(self.job_info())
+        #return job_id
         
 
     def job_info(self):
@@ -428,8 +428,8 @@ class Ansible(Task):
         p = Popen(" ".join(com), shell=True)
         p.wait()
 
-        job_id = self.store_job_info(self.job_info())
-        return job_id
+        #job_id = self.store_job_info(self.job_info())
+        #return job_id
         
 
     def job_info(self):
